@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script
+			type="module"
+			src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/legacy/build/pdf.min.mjs"
+		></script>
+	</head>
+	<body>
+		<canvas id="pdf-render"></canvas>
+	</body>
+	<script type="module">
+		pdfjsLib.GlobalWorkerOptions.workerSrc =
+			"https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/legacy/build/pdf.worker.min.mjs"
+
+		const canvas = document.getElementById("pdf-render")
+		const pdfPath = "sample.pdf"
+
+		const pdfDoc = await pdfjsLib.getDocument(pdfPath).promise
+
+		pdfjsLib.getDocument(pdfPath).promise.then((pdfDoc) => {
+			pdfDoc.getPage(1).then((page) => {
+				const viewport = page.getViewport({scale: 1.5})
+				canvas.height = viewport.height
+				canvas.width = viewport.width
+
+				page.render({
+					canvasContext: canvas.getContext("2d"),
+					viewport: viewport,
+				})
+			})
+		})
+
+		window.pdfDoc = pdfDoc
+		window.page
+	</script>
+</html>
