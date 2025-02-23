@@ -65,6 +65,7 @@ class PdfObject {
 	/**
 	 * Write string representation of the object
 	 * @returns {String}
+	 * @abstract
 	 */
 	Write() {
 		throw new Error("Not implemented")
