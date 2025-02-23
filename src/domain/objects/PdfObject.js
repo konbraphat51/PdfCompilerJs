@@ -22,12 +22,30 @@ class PdfObject {
 	 * This should be one of PdfObject.types
 	 * @type {String}
 	 */
-	type = ""
+	#type = ""
 
 	/**
 	 * Value of the PDF object
 	 */
-	value = null
+	#value = null
+
+	/**
+	 * Get value of the object
+	 * @returns {Object}
+	 * @readonly
+	 */
+	get value() {
+		return this.#value
+	}
+
+	/**
+	 * Get type of the object
+	 * @returns {String}
+	 * @readonly
+	 */
+	get type() {
+		return this.#type
+	}
 
 	/**
 	 * Constructor
@@ -40,8 +58,25 @@ class PdfObject {
 			throw new Error(`Invalid type ${type}`)
 		}
 
-		this.type = type
-		this.value = value
+		this.#type = type
+		this.#value = value
+	}
+
+	/**
+	 * Write string representation of the object
+	 * @returns {String}
+	 */
+	Write() {
+		throw new Error("Not implemented")
+	}
+
+	/**
+	 * Set value of the object
+	 * @param {Object} value Value of the object
+	 * @returns {void}
+	 */
+	Set(value) {
+		this.#value = value
 	}
 }
 
