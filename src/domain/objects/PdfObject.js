@@ -1,5 +1,6 @@
 /**
  * Base class for all objects of PDF Object
+ * @abstract
  */
 class PdfObject {
 	/**
