@@ -27,7 +27,7 @@ class PdfObject {
 	/**
 	 * Value of the PDF object
 	 */
-	#value = null
+	_value = null
 
 	/**
 	 * Get value of the object
@@ -35,7 +35,7 @@ class PdfObject {
 	 * @readonly
 	 */
 	get value() {
-		return this.#value
+		return this._value
 	}
 
 	/**
@@ -59,7 +59,7 @@ class PdfObject {
 		}
 
 		this.#type = type
-		this.#value = value
+		this._value = value
 	}
 
 	/**
@@ -76,7 +76,7 @@ class PdfObject {
 	 * @returns {void}
 	 */
 	Set(value) {
-		this.#value = value
+		this._value = value
 	}
 }
 
