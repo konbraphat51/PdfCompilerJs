@@ -44,3 +44,5 @@ class PdfObject {
 		this.value = value
 	}
 }
+
+export default PdfObject
